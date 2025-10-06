@@ -82,7 +82,7 @@ public class Auto {
       Client client = new Client();
       while (!t.isEmpty()) {
         String current = get(tokens);
-        tokens= remove(tokens);
+        tokens = remove(tokens);
         if (current.matches("generate")) {
           current = get(tokens);
           tokens = remove(tokens);
@@ -90,12 +90,10 @@ public class Auto {
             current = get(tokens);
             tokens = remove(tokens);
             String prompt = current;
+            current = get(tokens);
+            tokens = remove(tokens);
             if (current.matches("\"")) {
-              GenerateContentResponse response =
-                  client.models.generateContent(
-                      "gemini-2.5-flash",
-                      prompt,
-                      null);
+              GenerateContentResponse response = client.models.generateContent("gemini-2.5-flash", prompt,null);
               System.out.println(response.text());
             } 
           }
